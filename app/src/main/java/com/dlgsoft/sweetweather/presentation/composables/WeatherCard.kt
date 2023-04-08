@@ -15,8 +15,8 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.dlgsoft.sweetweather.presentation.WeatherState
 import com.dlgsoft.sweetweather.R
+import com.dlgsoft.sweetweather.presentation.WeatherState
 import java.time.format.DateTimeFormatter
 import kotlin.math.roundToInt
 
@@ -30,7 +30,8 @@ fun WeatherCard(
     Card(
       backgroundColor = backgroundColor,
       shape = RoundedCornerShape(10.dp),
-      modifier = modifier.padding(16.dp)
+      modifier = modifier.padding(16.dp),
+      elevation = 8.dp
     ) {
       Column(
         modifier = Modifier

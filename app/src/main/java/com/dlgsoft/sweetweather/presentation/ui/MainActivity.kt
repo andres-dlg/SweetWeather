@@ -56,11 +56,10 @@ class MainActivity: ComponentActivity() {
               state = viewModel.state,
               backgroundColor = Purple700
             )
-            Spacer(modifier = Modifier.height(16.dp))
             WeatherForecast(
               state = viewModel.state,
-              modifier = Modifier
-                .fillMaxWidth()
+              backgroundColor = Purple700,
+              modifier = Modifier.fillMaxWidth()
             )
           }
           if (viewModel.state.isLoading) {
