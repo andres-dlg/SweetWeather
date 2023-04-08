@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import com.dlgsoft.sweetweather.presentation.WeatherViewModel
 import com.dlgsoft.sweetweather.presentation.composables.WeatherCard
 import com.dlgsoft.sweetweather.presentation.composables.WeatherForecast
 import com.dlgsoft.sweetweather.presentation.ui.theme.Purple500
@@ -20,9 +19,8 @@ import com.dlgsoft.sweetweather.presentation.ui.theme.Purple700
 
 @Composable
 fun HomeScreen(
-  viewModel: WeatherViewModel
+  homeViewModel: HomeViewModel
 ) {
-
   Box(modifier = Modifier.fillMaxSize()) {
     Column(
       modifier = Modifier
@@ -30,22 +28,22 @@ fun HomeScreen(
         .background(Purple500),
     ) {
       WeatherCard(
-        state = viewModel.state,
+        state = homeViewModel.state,
         backgroundColor = Purple700
       )
       WeatherForecast(
-        state = viewModel.state,
+        state = homeViewModel.state,
         itemBackgroundColor = Purple700,
         modifier = Modifier.fillMaxWidth()
       )
     }
-    if (viewModel.state.isLoading) {
+    if (homeViewModel.state.isLoading) {
       CircularProgressIndicator(
         modifier = Modifier.align(Alignment.Center),
         color = Purple700
       )
     }
-    viewModel.state.error?.let { error ->
+    homeViewModel.state.error?.let { error ->
       Text(
         text = error,
         color = Color.Red,

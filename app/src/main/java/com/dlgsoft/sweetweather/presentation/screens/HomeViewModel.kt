@@ -1,4 +1,4 @@
-package com.dlgsoft.sweetweather.presentation
+package com.dlgsoft.sweetweather.presentation.screens
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -8,18 +8,23 @@ import androidx.lifecycle.viewModelScope
 import com.dlgsoft.sweetweather.domain.location.LocationTracker
 import com.dlgsoft.sweetweather.domain.repository.WeatherRepository
 import com.dlgsoft.sweetweather.domain.util.Resource
+import com.dlgsoft.sweetweather.presentation.WeatherState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class WeatherViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
   private val repository: WeatherRepository,
   private val locationTracker: LocationTracker
 ): ViewModel() {
 
   var state by mutableStateOf(WeatherState())
     private set
+
+  init {
+    loadWeatherInfo()
+  }
 
   fun loadWeatherInfo() {
     viewModelScope.launch {
