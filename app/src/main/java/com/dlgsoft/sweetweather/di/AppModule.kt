@@ -8,6 +8,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
@@ -19,9 +21,23 @@ object AppModule {
 
   @Provides
   @Singleton
-  fun provideWeatherApi(): WeatherApi {
+  fun provideOkHttpClient(): OkHttpClient {
+    val loggingInterceptor = HttpLoggingInterceptor().also {
+      it.setLevel(HttpLoggingInterceptor.Level.BASIC)
+    }
+    return OkHttpClient.Builder()
+      .addInterceptor(loggingInterceptor)
+      .build()
+  }
+
+  @Provides
+  @Singleton
+  fun provideWeatherApi(
+    okHttpClient: OkHttpClient
+  ): WeatherApi {
     return Retrofit.Builder()
       .baseUrl("https://api.open-meteo.com/")
+      .client(okHttpClient)
       .addConverterFactory(MoshiConverterFactory.create())
       .build()
       .create()
