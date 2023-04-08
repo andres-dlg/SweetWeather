@@ -1,4 +1,4 @@
-package com.dlgsoft.sweetweather.presentation.screens
+package com.dlgsoft.sweetweather.presentation.screens.home
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

@@ -1,4 +1,4 @@
-package com.dlgsoft.sweetweather.presentation.screens
+package com.dlgsoft.sweetweather.presentation.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
