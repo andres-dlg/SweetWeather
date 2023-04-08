@@ -36,7 +36,7 @@ fun WeatherDailyCard(
       Spacer(modifier = Modifier.height(16.dp))
       LazyRow(
         contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(20.dp),
         content = {
           items(weatherDataPerDay.weatherData) { weatherDataItem ->
             HourlyWeatherDisplay(
